@@ -3,6 +3,8 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
+var httpProxy = require('http-proxy'); // added for php-serve
+var connect = require('gulp-connect-php'); // added connect-php
 import {stream as wiredep} from 'wiredep';
 
 const $ = gulpLoadPlugins();
@@ -89,29 +91,75 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
-  browserSync({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ['.tmp', 'app'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
 
-  gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
-    'app/images/**/*',
-    '.tmp/fonts/**/*'
-  ]).on('change', reload);
+//start php-serve
+gulp.task('php-serve', ['styles', 'fonts'], function () {
+    connect.server({
+        port: 9001,
+        base: 'app',
+        open: false
+    });
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+    var proxy = httpProxy.createProxyServer({});
+
+    browserSync({
+        notify: false,
+        port  : 9000,
+        server: {
+            baseDir   : ['.tmp', 'app'],
+            routes    : {
+                '/bower_components': 'bower_components'
+            },
+            middleware: function (req, res, next) {
+                var url = req.url;
+
+                if (!url.match(/^\/(styles|fonts|bower_components)\//)) {
+                    proxy.web(req, res, { target: 'http://127.0.0.1:9001' });
+                } else {
+                    next();
+                }
+            }
+        }
+    });
+
+    // watch for changes
+    gulp.watch([
+        'app/*.html',
+        'app/php/*.php',
+        'app/scripts/**/*.js',
+        'app/images/**/*',
+        '.tmp/fonts/**/*'
+    ]).on('change', reload);
+
+    gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/fonts/**/*', ['fonts']);
+    gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
+// end added php-serve
+
+// gulp.task('serve', ['styles', 'fonts'], () => {
+//   browserSync({
+//     notify: false,
+//     port: 9000,
+//     server: {
+//       baseDir: ['.tmp', 'app'],
+//       routes: {
+//         '/bower_components': 'bower_components'
+//       }
+//     }
+//   });
+
+//   gulp.watch([
+//     'app/*.html',
+//     'app/scripts/**/*.js',
+//     'app/images/**/*',
+//     '.tmp/fonts/**/*'
+//   ]).on('change', reload);
+
+//   gulp.watch('app/styles/**/*.scss', ['styles']);
+//   gulp.watch('app/fonts/**/*', ['fonts']);
+//   gulp.watch('bower.json', ['wiredep', 'fonts']);
+// });
 
 gulp.task('serve:dist', () => {
   browserSync({
