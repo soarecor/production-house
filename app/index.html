@@ -28,12 +28,13 @@
     <h1>Sheridan Production House</h1>
 
     <div v-repeat="posts">
-      <h3>{{ name }}</h3>
+      <h3>{{ projectName }}</h3>
+      <p> {{ projectSynopsis }}</p>
     </div>
 
-    <pre>
+    <!-- <pre>
       {{ $data | json}}
-    </pre>
+    </pre> -->
   </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

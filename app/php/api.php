@@ -1,14 +1,14 @@
 
 	<?php
 
-		$db = new PDO('mysql:host=localhost:8889;dbname=cakes;charset=utf8', 'root', 'root');
+		$db = new PDO('mysql:host=localhost:8889;dbname=shertv_SPH-DBFinal;charset=utf8', 'root', 'root');
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 		// var_dump( $db );
 
 		try {
-			$query = $db->query( "SELECT * FROM `cakes`");
+			$query = $db->query( "SELECT * FROM `sp_projects`");
 			$result = $query->fetchAll();
 			echo json_encode( $result );
 			//echo "<br>Done";
