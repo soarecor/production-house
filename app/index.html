@@ -28,7 +28,7 @@
       <div class="main-nav">
         <div class="inner">
           <h1 class="main-nav__logo">Sheridan</h1>
-          <input class="main-nav__search-bar" type="text">
+          <input class="main-nav__search-bar" type="text" v-model="search">
           <ul class="main-nav__nav-items">
             <li>About</li>
             <li>Login</li>
@@ -47,11 +47,12 @@
         </div>
       </nav>
     </nav>
-
-  <!--   <div v-repeat="posts">
-      <h3>{{ projectName }}</h3>
-      <p> {{ projectSynopsis }}</p>
-    </div> -->
+    
+    <div class="inner">
+      <div v-repeat="posts | filterBy search">
+        <h3>{{ projectName }}</h3>
+      </div>
+    </div>
 
     <!-- <pre>
       {{ $data | json}}
