@@ -1,0 +1,43 @@
+.main-nav{
+	background: #eee;
+	height: 50px;
+}
+
+.main-nav__logo{
+	float: left;
+	line-height: 50px;
+	width: 25%;
+	max-width: 150px;
+}
+
+.main-nav__search-bar{
+	float: left;
+	width: 50%;
+	max-width: 500px;
+	height: 30px;
+	margin: 10px 0;
+}
+
+.main-nav__nav-items{
+	width: 25%;
+	float: right;
+	line-height: 50px;
+	text-align: right;
+	& li {
+		display: inline-block;
+		padding-left: 1.6em;
+	}
+}
+
+.sub-nav{
+	border: 1px solid #eee;
+	height: 50px;
+}
+
+.sub-nav__nav-items{
+	line-height: 50px;
+	& li {
+		display: inline-block;
+		padding-right: 1.6em;
+	}
+}

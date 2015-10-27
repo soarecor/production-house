@@ -1,9 +1,12 @@
 // bower:scss
 // endbower
 
-body {
+// colours
 
-}
+
+@import 'reset';
+@import 'layout';
+@import 'nav';
 
 .browserupgrade {
   margin: 0.2em 0;
