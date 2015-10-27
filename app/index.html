@@ -19,23 +19,44 @@
     <!-- endbuild -->
     
   </head>
-  <body>
+  <body id="app">
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+  
+    <nav class="nav">
+      <div class="main-nav">
+        <div class="inner">
+          <h1 class="main-nav__logo">Sheridan</h1>
+          <input class="main-nav__search-bar" type="text" v-model="search">
+          <ul class="main-nav__nav-items">
+            <li>About</li>
+            <li>Login</li>
+          </ul>
+        </div>
+      </div>
+      <nav class="sub-nav">
+        <div class="inner">
+          <ul class="sub-nav__nav-items">
+            <li>Browse</li>
+            <li>Program</li>
+            <li>Projects</li>
+            <li>People</li>
+            <li>Technologies</li>
+          </ul>
+        </div>
+      </nav>
+    </nav>
     
-  <div id="app">
-    <h1>Sheridan Production House</h1>
-
-    <div v-repeat="posts">
-      <h3>{{ projectName }}</h3>
-      <p> {{ projectSynopsis }}</p>
+    <div class="inner">
+      <div v-repeat="posts | filterBy search">
+        <h3>{{ projectName }}</h3>
+      </div>
     </div>
 
     <!-- <pre>
       {{ $data | json}}
     </pre> -->
-  </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
