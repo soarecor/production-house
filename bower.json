@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "vue": "~0.12.16",
-    "vue-resource": "~0.1.16"
+    "vue-resource": "~0.1.16",
+    "director": "~1.2.8"
   }
 }

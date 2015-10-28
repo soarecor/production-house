@@ -50,11 +50,19 @@
     
     <div class="inner">
       <div v-repeat="posts | filterBy search">
-        <h3>{{ projectName }}</h3>
+        <figure class="movie">
+            <figcaption>{{ projectName }}</figcaption>
+            <a href="#/project/{{ projectID }}">More</a>
+          </figure>
       </div>
+
     </div>
 
-    <!-- <pre>
+    <div class="project-modal">
+      <a href="#/">Back</a>
+    </div>
+
+ <!--    <pre>
       {{ $data | json}}
     </pre> -->
     
@@ -73,6 +81,7 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/vue/dist/vue.js"></script>
     <script src="/bower_components/vue-resource/dist/vue-resource.js"></script>
+    <script src="/bower_components/director/build/director.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     

@@ -39,5 +39,7 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
   }
 }
