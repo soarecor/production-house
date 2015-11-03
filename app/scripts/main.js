@@ -30,6 +30,7 @@ var viewProject = function (projectId) {
     		description = app.posts[i].projectDescr;
     		imgURL = app.posts[i].imageURL;
     		$(".project-modal").html("<a href='#/'>back</a>" + "<h1>" + title + "</h1>" + "<p>" + description + "</p>" + "<img src='http://phoenix.sheridanc.on.ca/~shertv/SPH/pImage/" + imgURL + "'>");
+    		break;
     	}
     }
 };
