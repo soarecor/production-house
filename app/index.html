@@ -17,13 +17,15 @@
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    
+
   </head>
   <body id="app">
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      testing git
     <![endif]-->
-  
+
+
     <nav class="nav">
       <div class="main-nav">
         <div class="inner">
@@ -42,12 +44,13 @@
             <li>Program</li>
             <li>Projects</li>
             <li>People</li>
+            <li>Genres</li>
             <li>Technologies</li>
           </ul>
         </div>
       </nav>
     </nav>
-    
+
     <div class="inner">
       <script type="x-template" id="home">
         <h1>This is Food</h1>
@@ -57,7 +60,7 @@
               <a href="#/project/{{ projectID }}">More</a>
             </figure>
         </div>
-      </script>  
+      </script>
         <router-view></router-view>
 
     </div>
@@ -69,7 +72,7 @@
  <!--    <pre>
       {{ $data | json}}
     </pre> -->
-    
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -89,7 +92,7 @@
     <script src="/bower_components/vue-router/dist/vue-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
+
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
